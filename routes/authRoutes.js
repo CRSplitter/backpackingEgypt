@@ -22,6 +22,10 @@ var upload = multer({
   storage: storage
 });
 
+router.get("/heyy", function(req, res){
+  res.send("hello world from auth route")
+})
+
 
 router.post("/signup", upload.single('profile_picture'), function(req, res, next) {
     var username = req.body.username;

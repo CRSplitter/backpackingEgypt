@@ -10,7 +10,7 @@ const secret = 'thisismytopsecret'
 var app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://megzz:vFEsYSGToohrTtnq@bpegypt-shard-00-00-tgmxi.mongodb.net:27017,bpegypt-shard-00-01-tgmxi.mongodb.net:27017,bpegypt-shard-00-02-tgmxi.mongodb.net:27017/<DATABASE>?ssl=true&replicaSet=bpegypt-shard-0&authSource=admin
+mongoose.connect(`mongodb://megzz:vFEsYSGToohrTtnq@bpegypt-shard-00-00-tgmxi.mongodb.net:27017,bpegypt-shard-00-01-tgmxi.mongodb.net:27017,bpegypt-shard-00-02-tgmxi.mongodb.net:27017/bpegypt?ssl=true&replicaSet=bpegypt-shard-0&authSource=admin
  COPY`);
 app.set("port", process.env.PORT || 3000);
 app.set('superSecret', secret); // secret variable

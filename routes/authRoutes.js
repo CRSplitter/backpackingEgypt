@@ -31,6 +31,10 @@ router.post("/signup", upload.single('profile_picture'), function(req, res, next
     var username = req.body.username;
     var password = req.body.password;
     var description = req.body.description;
+    var email = req.body.email;
+    var country = req.body.country
+    var displayName = req.body.displayName
+
 
 
     User.findOne({
@@ -58,6 +62,9 @@ router.post("/signup", upload.single('profile_picture'), function(req, res, next
           username: username,
           password: password,
           description: description,
+          email: email,
+          country: country,
+          displayName: displayName,
           profile_picture: req.file.filename
         });
       } else {
@@ -65,7 +72,10 @@ router.post("/signup", upload.single('profile_picture'), function(req, res, next
         newUser = new User({
           username: username,
           password: password,
-          description: description
+          description: description,
+          displayName: displayName,
+          email: email,
+          country: country
 
         });
       }

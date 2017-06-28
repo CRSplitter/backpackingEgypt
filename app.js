@@ -7,12 +7,18 @@ const jwt = require('jsonwebtoken');
 const morgan = require('morgan');
 const secret = 'thisismytopsecret'
 var tls = require('tls')
+var MongoClient = require('mongodb').MongoClient;
 
+var uri = `mongodb://megzz:vFEsYSGToohrTtnq@bpegypt-shard-00-00-tgmxi.mongodb.net:27017,bpegypt-shard-00-01-tgmxi.mongodb.net:27017,bpegypt-shard-00-02-tgmxi.mongodb.net:27017/bpegypt?ssl=true&replicaSet=bpegypt-shard-0&authSource=admin
+ COPY`;
+MongoClient.connect(uri, function(err, db) {
+  db.close();
+});
 var app = express();
 
-mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://megzz:vFEsYSGToohrTtnq@bpegypt-shard-00-00-tgmxi.mongodb.net:27017,bpegypt-shard-00-01-tgmxi.mongodb.net:27017,bpegypt-shard-00-02-tgmxi.mongodb.net:27017/bpegypt?ssl=true&replicaSet=bpegypt-shard-0&authSource=admin
- COPY`);
+// mongoose.Promise = global.Promise;
+// mongoose.connect(`mongodb://megzz:vFEsYSGToohrTtnq@bpegypt-shard-00-00-tgmxi.mongodb.net:27017,bpegypt-shard-00-01-tgmxi.mongodb.net:27017,bpegypt-shard-00-02-tgmxi.mongodb.net:27017/bpegypt?ssl=true&replicaSet=bpegypt-shard-0&authSource=admin
+//  COPY`);
 app.set("port", process.env.PORT || 3000);
 app.set('superSecret', secret); // secret variable
 app.use(bodyParser.urlencoded({ extended: false }));

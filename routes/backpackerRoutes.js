@@ -43,7 +43,9 @@ router.post('/apply', authenticated, function(req, res, next) {
     }
     newBackpacker = new Backpacker({
       _id: req.user._id,
-      verified: 1
+      verified: 1,
+      avgRating: 0,
+      raters:0
     })
       return newBackpacker.save(function(err) {
         if (err) {

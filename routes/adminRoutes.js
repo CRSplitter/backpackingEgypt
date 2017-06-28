@@ -33,16 +33,26 @@ router.get('/viewRequests', function(req, res) {
 
 })
 
-router.post('/verifyBackpacker:username', function(req, res) {
-  User.findOne({ username: req.param.username }, function(err, backpacker) {
+router.post('/verifyBackpacker:username', authenticated, function(req, res) {
+
+  let str = (req.params.username).slice(1)
+  User.findOne({ username: str }, function(err, user) {
     if (err) {
       return res.status(500).json({
         error: true,
         message: 'cannot find backpacker'
       })
     }
-    backpacker.isBackpacker = 2
-    backpacker.save(function(err){
+
+    if(!user) {
+      return res.status(404).json({
+        error: true,
+        message:'no backpaacker found!'
+      })
+    }
+    console.log(user);
+    user.isBackpacker = 2
+    user.save(function(err){
       if(err) {
         return res.status(500).json({
           error: true,

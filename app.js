@@ -6,6 +6,7 @@ const flash = require("connect-flash");
 const jwt = require('jsonwebtoken');
 const morgan = require('morgan');
 const secret = 'thisismytopsecret'
+var tls = require('tls')
 
 var app = express();
 
